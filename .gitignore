@@ -1,18 +1,19 @@
-# Generated
+# Ignore everything in output by default
+output/*
+!output/allptl.csv
+!output/allptl.xlsx
+
+# Python
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .DS_Store
+.env
 
-# Data & Outputs
+# Project specific
 images/
 ocr/
-# Allow specific output and source files as requested
-# output/
-# *.pdf
+sanitize.py
 
-# Secrets
-.env
-google-credentials.json
-key.json
-*.key
+# Logs
+*.log
