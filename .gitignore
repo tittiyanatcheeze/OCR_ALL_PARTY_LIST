@@ -1,0 +1,17 @@
+# Generated
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# Data & Outputs
+images/
+ocr/
+output/
+*.pdf
+
+# Secrets
+.env
+google-credentials.json
+key.json
+*.key
