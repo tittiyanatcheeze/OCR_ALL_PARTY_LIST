@@ -1,38 +1,31 @@
-# OCR All Party List
+# โปรเจกต์ OCR รายชื่อผู้สมัครรับเลือกตั้ง (Party List)
 
-This project extracts candidate information from PDF documents (specifically Thai election party lists) using OCR.
+โปรเจกต์นี้ใช้สำหรับดึงข้อมูลรายชื่อผู้สมัครรับเลือกตั้งแบบบัญชีรายชื่อจากไฟล์ PDF (สส. 4/24) โดยใช้ Google Cloud Vision API ในการทำ OCR และจัดหมวดหมู่ข้อมูล
 
-## Pipeline (`full_pipe.py`)
+## ส่วนประกอบของโปรเจกต์ (`full_pipe.py`)
 
-The pipeline consists of three main steps:
+กระบวนการทำงานหลักแบ่งเป็น 3 ขั้นตอน:
 
-1.  **PDF to Images**: Converts the input PDF into individual page images.
-2.  **OCR**: Uses Google Cloud Vision API to extract text from images.
-3.  **Parsing**: Parses the OCR results to extract party names, candidate names, and addresses, exporting them to a CSV file.
+1.  **PDF to Images**: แปลงไฟล์ PDF ต้นฉบับเป็นรูปภาพรายหน้า
+2.  **OCR**: ใช้ Google Cloud Vision API ดึงข้อความจากรูปภาพ และบันทึกเป็นไฟล์ JSON
+3.  **Parsing**: นำข้อมูลจาก JSON มาประมวลผลเพื่อแยกชื่อพรรค, ลำดับ, ชื่อ-นามสกุล และที่อยู่ แล้วส่งออกเป็นไฟล์ CSV/Excel
 
-## Prerequisites
+## ไฟล์สำคัญ
 
--   Python 3.x
--   Google Cloud Vision API credentials
--   Poppler (for `pdf2image`)
+- `สส 4 ทับ 24.pdf`: ไฟล์เอกสารต้นฉบับ
+- `full_pipe.py`: สคริปต์หลักในการทำงาน
+- `output/allptl.xlsx`: ไฟล์ผลลัพธ์ที่ได้จากการประมวลผล
+- `OCR.ipynb`: Notebook สำหรับทดสอบและตรวจสอบการทำงาน
 
-## Setup
+## การติดตั้งและใช้งาน
 
-1.  Install dependencies:
-    ```bash
-    pip install pandas pdf2image google-cloud-vision regex
-    ```
-2.  Set up Google Cloud credentials.
-3.  Configure `POPPLER_PATH` and `PDF_PATH` in `full_pipe.py` if necessary.
-
-## Usage
-
-Run the full pipeline:
-
-```bash
-python full_pipe.py
-```
-
-## Output
-
-Results are saved to `output/candidates.csv`.
+1. ติดตั้ง Library ที่จำเป็น:
+   ```bash
+   pip install pandas pdf2image google-cloud-vision regex openpyxl
+   ```
+2. ตั้งค่า Google Cloud Credentials
+3. ตรวจสอบพาธของ Poppler และไฟล์ PDF ในโค้ด `full_pipe.py`
+4. รันสคริปต์:
+   ```bash
+   python full_pipe.py
+   ```

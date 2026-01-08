@@ -7,8 +7,9 @@ __pycache__/
 # Data & Outputs
 images/
 ocr/
-output/
-*.pdf
+# Allow specific output and source files as requested
+# output/
+# *.pdf
 
 # Secrets
 .env
